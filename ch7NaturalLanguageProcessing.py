@@ -282,10 +282,14 @@ def skip_gram():
     # Lookup the input word embedding:
     embed = tf.nn.embedding_lookup(embeddings, x_inputs)#we are given the the words and get the embeddings for them
 
-    ''' LOSS needs to be verified'''
+    ''' LOSS theory needs to be verified'''
     #NCE
     #stackexchange#https://datascience.stackexchange.com/questions/13216/intuitive-explanation-of-noise-contrastive-estimation-nce-loss
+    #tf version explained#https://stackoverflow.com/questions/41475180/understanding-tf-nn-nce-loss-in-tensorflow
     #article explaining theory#https://leimao.github.io/article/Noise-Contrastive-Estimate/
+    '''onenote document link
+    https://uottawams-my.sharepoint.com/personal/ashum048_uottawams_onmicrosoft_com/_layouts/OneNote.aspx?id=%2Fpersonal%2Fashum048_uottawams_onmicrosoft_com%2FDocuments%2FCurrent_studies&wd=target%28tensorflow.one%7C1121A56B-BFF5-4594-AEC0-58829EF57D77%2Fch7%20Natural%20language%20processing%7CCAAB0217-19A8-4F54-9A94-AA5F09ECDB29%2F%29
+    '''
     # NCE loss parameters
     nce_weights = tf.Variable(tf.truncated_normal([vocabulary_size, embedding_size], stddev=1.0 / np.sqrt(embedding_size)))
     nce_biases = tf.Variable(tf.zeros([vocabulary_size]))
